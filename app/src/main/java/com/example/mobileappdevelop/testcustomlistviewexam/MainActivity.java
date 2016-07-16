@@ -4,8 +4,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
     ListView contactList;
+    ArrayList<Data> datas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -13,6 +16,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         contactList = (ListView) findViewById(R.id.firstListView);
 
-        //ContactAdapter<Data> = new ContactAdapter(this,list_row,R.id.firstListView.)
+        Data data = new Data();
+        datas = data.getAlldata();
+        ContactAdapter adapter = new ContactAdapter(this, datas);
+        contactList.setAdapter(adapter);
     }
 }
